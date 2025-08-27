@@ -1,4 +1,3 @@
-
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
@@ -583,7 +582,7 @@ end
 })
 
 local Toggle = MainTab:CreateToggle({
-   Name = "Toggle Fly - F",
+   Name = "Toggle Fly",
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
@@ -592,7 +591,7 @@ local player = game.Players.LocalPlayer
 local userInput = game:GetService("UserInputService")
 
 local selected = false
-local speed = 30
+local speed = 100
 local lastUpdate = 0
 
 function getNextMovement(deltaTime)
@@ -658,7 +657,7 @@ end
 
 local mouse = player:GetMouse()
 mouse.KeyDown:Connect(function(key)
-		if key == "V" then
+		if key == "F" then
 		onkeypressed()
 	end
 end)
