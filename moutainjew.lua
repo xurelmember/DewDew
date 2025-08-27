@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "dew.wtf",
+   Name = "dew.wtf - Join discord.gg/ePfPyDmXEX",
    Icon = 0,
    LoadingTitle = "MTN DEW",
    LoadingSubtitle = "by Xurelmember",
