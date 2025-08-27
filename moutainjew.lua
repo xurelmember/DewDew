@@ -20,25 +20,24 @@ local Window = Rayfield:CreateWindow({
    },
 
    Discord = {
-      Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
-      Invite = "ePfPyDmXEX", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+      Enabled = true, 
+      Invite = "ePfPyDmXEX", 
+      RememberJoins = true 
    },
 
-   KeySystem = true, -- Set this to true to use our key system
+   KeySystem = true, 
    KeySettings = {
       Title = "Dew.wtf",
       Subtitle = nil,
-      Note = "Join discord to get key", -- Use this to tell the user how to get a key
-      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-      SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"Haroldismonkey"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
-   }
+      Note = "Join discord to get key", 
+      FileName = "Key",
+      SaveKey = false, 
+      GrabKeyFromSite = false, 
+      Key = {"DewIsHere"} 
 })
 
 
-local MainTab = Window:CreateTab("Home", nil) -- Title, Image
+local MainTab = Window:CreateTab("Home", nil)
 local MainSection = MainTab:CreateSection("Common Features")
 
 local Button = MainTab:CreateButton({
@@ -586,7 +585,7 @@ end
 local Toggle = MainTab:CreateToggle({
    Name = "Noah777",
    CurrentValue = false,
-   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Flag = "Toggle1", 
    Callback = function(Value)
    local TextChatService = cloneref(game:GetService("TextChatService"))
 local Players = cloneref(game:GetService("Players"))
@@ -616,13 +615,12 @@ local Slider = MainTab:CreateSlider({
    Increment = 1,
    Suffix = "Walk",
    CurrentValue = 16,
-   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
+   Flag = "Slider1", 
          game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value  
    end,
 })
 
-local MainTab = Window:CreateTab("Just ESP", nil) -- Title, Image
+local MainTab = Window:CreateTab("Just ESP", nil) 
 local MainSection = MainTab:CreateSection("Esp Visuals")
 
 local Button = MainTab:CreateButton({
@@ -633,12 +631,12 @@ local Button = MainTab:CreateButton({
     Tracer_Color = Color3.fromRGB(255, 0, 0),
     Tracer_Thickness = 1,
     Box_Thickness = 1,
-    Tracer_Origin = "Bottom", -- Middle or Bottom if FollowMouse is on this won't matter...
+    Tracer_Origin = "Bottom", 
     Tracer_FollowMouse = false,
     Tracers = true
 }
 local Team_Check = {
-    TeamCheck = false, -- if TeamColor is on this won't matter...
+    TeamCheck = false, 
     Green = Color3.fromRGB(0, 255, 0),
     Red = Color3.fromRGB(255, 0, 0)
 }
@@ -680,23 +678,23 @@ local function Visibility(state, lib)
     end
 end
 
-local function ToColor3(col) --Function to convert, just cuz c;
-    local r = col.r --Red value
-    local g = col.g --Green value
-    local b = col.b --Blue value
-    return Color3.new(r,g,b); --Color3 datatype, made of the RGB inputs
+local function ToColor3(col) 
+    local r = col.r 
+    local g = col.g 
+    local b = col.b 
+    return Color3.new(r,g,b);
 end
 
 local black = Color3.fromRGB(0, 0 ,0)
 local function ESP(plr)
     local library = {
-        --//Tracer and Black Tracer(black border)
+        
         blacktracer = NewLine(Settings.Tracer_Thickness*2, black),
         tracer = NewLine(Settings.Tracer_Thickness, Settings.Tracer_Color),
-        --//Box and Black Box(black border)
+        
         black = NewQuad(Settings.Box_Thickness*2, black),
         box = NewQuad(Settings.Box_Thickness, Settings.Box_Color),
-        --//Bar and Green Health Bar (part that moves up/down)
+       
         healthbar = NewLine(3, black),
         greenhealth = NewLine(1.5, black)
     }
@@ -749,7 +747,7 @@ local function ESP(plr)
                         library.blacktracer.To = Vector2.new(0, 02)
                     end
 
-                    --// Health Bar
+                  
                     local d = (Vector2.new(HumPos.X - DistanceY, HumPos.Y - DistanceY*2) - Vector2.new(HumPos.X - DistanceY, HumPos.Y + DistanceY*2)).magnitude 
                     local healthoffset = plr.Character.Humanoid.Health/plr.Character.Humanoid.MaxHealth * d
 
@@ -806,7 +804,7 @@ end)
    end,
 })
 
-local TeleportsTab = Window:CreateTab("Main Teleports", nil) -- Title, Image
+local TeleportsTab = Window:CreateTab("Main Teleports", nil) 
 
 local Section = TeleportsTab:CreateSection("Places")
 
@@ -822,8 +820,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait() 
 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
@@ -843,9 +841,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
-
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait() 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
 LocalPrimaryPart.CFrame = workspace.Teleports["Bank Of South London"]["Bank Of South London"].CFrame
@@ -864,8 +861,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait() 
 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
@@ -885,8 +882,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait() 
 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
@@ -906,9 +903,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
-
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait() 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
 LocalPrimaryPart.CFrame = game:GetService("ReplicatedStorage").TrackQuestLocations.Gunstore2.CFrame
@@ -927,8 +923,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait() 
 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
@@ -948,8 +944,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait() 
 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
@@ -969,8 +965,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
+task.spawn(SendAsync, "/respawn")
+Players.LocalPlayer.CharacterAdded:Wait() 
 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
@@ -990,8 +986,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait()
 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
@@ -1011,8 +1007,8 @@ local function SendAsync(Message: string)
   TextChannel:SendAsync(Message)
 end
 
-task.spawn(SendAsync, "/respawn") -- spawn as :SendAsync yields on executors/roblox (intended behaivor?)
-Players.LocalPlayer.CharacterAdded:Wait() -- yield until character respawns
+task.spawn(SendAsync, "/respawn") 
+Players.LocalPlayer.CharacterAdded:Wait() 
 
 local LocalPrimaryPart = Players.LocalPlayer.Character.PrimaryPart or Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 
